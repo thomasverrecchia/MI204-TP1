@@ -42,6 +42,6 @@ Pour l'affichage on a réutiliser vmin = 0 et vmax = 255 car on ne peut pas avor
 
 ## 3 Détecteurs
 
-4. 
+4. mes couilles
 
             
