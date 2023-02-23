@@ -13,9 +13,23 @@ print("Type de l'image :",img.dtype)
 t1 = cv2.getTickCount()
 Theta = cv2.copyMakeBorder(img,0,0,0,0,cv2.BORDER_REPLICATE)
 # Mettre ici le calcul de la fonction d'intérêt de Harris
-#
-#
-#
+kernel_dx = np.array([[-1, 0, 1]])
+kernel_dy = np.array([[-1, 0, 1]]).T
+img3_x = cv2.filter2D(img,-1,kernel_dx)
+img3_y = cv2.filter2D(img,-1,kernel_dy)
+dx_square = img3_x**2
+dy_square = img3_y**2
+dx_dy = img3_x * img3_y
+alpha = 0.06
+W_h = h/100
+W_w = w/100
+for x in range(h):
+    for y in range(w):
+        Ksi = np.array([[dx_square[int(x - W_h/2):int(x + W_h/2)+1][int(y - W_w/2):int(y + W_w/2) + 1].sum(), dx_dy[int(x - W_h/2):int(x + W_h/2) + 1][int(y - W_w/2):int(y + W_w/2) + 1].sum()],[dx_dy[int(x - W_h/2):int(x + W_h/2) + 1][int(y - W_w/2):int(y + W_w/2) + 1].sum(), dy_square[int(x - W_h/2):int(x + W_h/2) + 1][int(y - W_w/2):int(y + W_w/2) + 1].sum()]])
+        print('sum dx2 vaut : ', dx_square[int(x - W_h/2):int(x + W_h/2)+1][int(y - W_w/2):int(y + W_w/2) + 1].sum(), '\n')
+        interest = np.linalg.det(Ksi) - alpha * np.trace(Ksi)
+        Theta[x, y] = interest
+        print(interest)
 # Calcul des maxima locaux et seuillage
 Theta_maxloc = cv2.copyMakeBorder(Theta,0,0,0,0,cv2.BORDER_REPLICATE)
 d_maxloc = 3
