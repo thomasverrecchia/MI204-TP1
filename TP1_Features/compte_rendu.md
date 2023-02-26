@@ -88,3 +88,5 @@ La dilatation morphologique permet à elle seule d'avoir un maximum local sur ch
 
     et pour un W fixer à 100, on a:
     ![img_3.png](img_3.png)
+
+            
