@@ -84,10 +84,12 @@ on arrive finalement à ce résultat:
 La dilatation morphologique permet à elle seule d'avoir un maximum local sur chaque carré de pixels successivement, ainsi si un maximum plus grand se trouve à proximité, ce dernier deviendra le nouveau maximum. De plus, le fait de traiter par seuil permet d'éviter les valeurs parasites.
 
 5. On remarque en faisant varier les différents paramètres que le nombre de points d'intérêt est inversemment proportionnel à l'épaisseur de la fenêtre (ici W représente la valeur par laquelle on divise la taille de l'image) et à alpha. En effet, pour un alpha fixé à 0.06, on obtient:
+
 ![img_2.png](img_2.png)
 
-    et pour un W fixer à 100, on a:
-    ![img_3.png](img_3.png)
+et pour un W fixer à 100, on a:
+
+![img_3.png](img_3.png)
 
 
 6. Le détecteur ORB utilise dans un premier temps la recherche
