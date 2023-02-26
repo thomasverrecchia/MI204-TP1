@@ -89,4 +89,41 @@ La dilatation morphologique permet à elle seule d'avoir un maximum local sur ch
     et pour un W fixer à 100, on a:
     ![img_3.png](img_3.png)
 
+
+6. Le détecteur ORB utilise dans un premier temps la recherche
+des filtres de différences gaussiennes pour sélectionner un
+ensemble de points à haute réponses puis il effectue une sélection
+des points les plus stables dans l'espace d'échelle. ORB utilise
+ensuite un algorithme de création de descripteurs pour associer les
+points entre eux. KAZE quant à lui utilise un détecteur de
+segment accéleré pour détecter les points d'intérêt puis il
+les caractérise en utilisant le moment de Zernike. 
+
+Les principaux paramètres de ORB sont :
+
+  - nfeature : Le nombre maximum de points à détecter.
+  - scaleFactor : Le facteur d'échelle utilisé. 
+  - nlevels : Le nombre de niveaux d'échelles réalisés. En 
+    augmentant le nombre de niveaux, on permet la détection
+    de points d'intérêts à plis petite échelle mais on augmente
+    également le temps de calcul.
+
+Les principaux paramètres de KAZE sont : 
+
+  - upright : Si upright == True, le descripteur est calculé
+    à partir d'une version redressé de l'image ce qui diminue
+    le temps de calcul mais également la précision.
+  - treshold : Suprime les régions peut contrasté de l'image.
+  - nOctaves : Le nombre de niveaux d'échelles.
+  - nOctaveslayers : Le nombre de sous niveaux dans chaque
+    niveau d'échelle.
+  - Diffusivity : Type de diffusion utilisé pour filtrer l'image.
+
+Pour évaluer la répétabilité des détecteurs on peut comparer 
+les points d'intérêts détectés dans deux images différentes d'un
+même objet. Le déteteur à une bonne répétabilité si les points d'intérêt sont 
+les mêmes dans les deux images.
+
+7. 
+
             
